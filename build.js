@@ -4,18 +4,16 @@ var path = require('path');
 var target = path.resolve(__dirname, './models');
 var output = path.resolve(__dirname, './static/models.js');
 
-if (process.argv[2]) {
-  target = path.resolve(process.cwd(), process.argv[2]);
-}
-
 var files = [];
-if (fs.lstatSync(target).isDirectory()) {
-  files = fs.readdirSync(target).map(function (filename) {
-    return target + '/' + filename;
-  });
-} else {
-  files.push(target);
-}
+var isJS = /(.js)$/;
+
+console.log('\nReading model files...');
+fs.readdirSync(target).forEach(function (filename) {
+  if (isJS.test(filename)) {
+    files.push(target + '/' + filename);
+    console.log(filename);
+  }
+});
 
 var data = files.map(function (file) {
   var filepath = file.split('/');
@@ -27,3 +25,4 @@ var data = files.map(function (file) {
 });
 
 fs.writeFile(output, 'window.models = ' + JSON.stringify(data) + ';');
+console.log('Models built to ' + output + '\n');

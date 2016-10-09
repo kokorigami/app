@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "prepublish": "node ./buildModels.js",
+    "prepublish": "node ./build.js",
     "start": "npm install && open index.html"
   },
   "dependencies": {
