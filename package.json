@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "prepublish": "node ./buildModels.js",
+    "start": "npm install && open index.html"
+  },
   "dependencies": {
-    "koa": "^1.2.0",
-    "koa-static": "^2.0.0"
+    "kokorigami": "git+ssh://git@github.com/kokorigami/kokorigami.git",
+    "kokorigami-viewer": "git+ssh://git@github.com/kokorigami/viewer.git"
   }
 }
