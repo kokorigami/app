@@ -1,9 +1,11 @@
 {
   "scripts": {
-    "prepublish": "node ./build.js",
+    "prepublish": "npm run build",
+    "build": "node build.js && browserify src/app.js > static/app.js --debug",
     "start": "npm install && open index.html"
   },
   "dependencies": {
+    "browserify": "^13.1.0",
     "kokorigami": "git+ssh://git@github.com/kokorigami/kokorigami.git",
     "kokorigami-viewer": "git+ssh://git@github.com/kokorigami/viewer.git"
   }
